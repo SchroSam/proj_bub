@@ -1,14 +1,24 @@
-/* SamuelS
-   11/16/18
-   Project bubby (that's my super cool development name)
-   
-   
+/* Shrod, 
+
    PLEASE NOTE YOU WILL NEED THE ADDITIONAL USER CREATED "MINIM" 
    SOUND LIBRARY TO RUN THIS CODE 
+   
 */
-//import processing.sound.*;
+
+/*extra libraries that needed to be imported
+TO RUN THIS WITH PROCESSING YOU NEED TO HAVE THESE LIBRARIES DOWNLOADED AND ENABLED OR IT WILL NOT WORK
+
+*/
+
 import ddf.minim.*;
 
+
+
+//pre-program variables that need to be made global, sound and image files being loaded, intro music being played etc.
+
+//ps. this code person (or some version of him) should totally be me and my partners' mascot/logo/something
+
+int score = 0;
 float Hx = 30;
 float Hy = 30; 
 float Vx = 470;
@@ -27,6 +37,7 @@ AudioSample start = null;
 void setup() {
   size (500,500);
   background(255);
+  textSize(15);
   skull = loadImage("Skull.jpg");
   game = new Minim(this);
   lose = game.loadSample("lose.mp3");
@@ -41,7 +52,7 @@ void draw() {
   HitReg();
   Change();
 }
-
+//function to draw/redraw the hero blob (and everything else) (used in the main movement function for the hero blob)
 void drawBlobH(){
   if(GemStet == 0){
   fill(255);
@@ -51,9 +62,11 @@ void drawBlobH(){
   ellipse(Vx,Vy,30,30);
   fill(240,233,12);
   ellipse(Cx,Cy,5,5);
+  fill(0);
+  text("Score: " + score, 220, 13);
   }
 }
-
+//function to draw/redraw the villain blob (used in the main movement function for the villain blob)
 void drawBlobV(){
   if(GemStet == 0){
     fill(0,170,80);
@@ -63,6 +76,8 @@ void drawBlobV(){
     ellipse(Hx,Hy,30,30);
     fill(240,233,12);
     ellipse(Cx,Cy,5,5);
+    fill(0);
+    text("Score: " + score, 220, 13);
   }
   if(GemStet == 1){
     fill(0,170,80);
@@ -71,12 +86,14 @@ void drawBlobV(){
     ellipse(Vx,Vy,30,30);
     fill(240,233,12);
     ellipse(Cx,Cy,5,5);
+    fill(0);
+    text("Score: " + score, 220, 13);
     
   }
 }
 
 
-//thus begins the tale of "mobingBlob"
+//the programming for the movement of the hero (player) "movingBlob"
 void movingBlob(int SD) { 
   drawBlobH();
  if(GemStet == 0){
@@ -115,7 +132,7 @@ void movingBlob(int SD) {
   }
  }
 
-//thus marks the end of "movingBlob" the hero of our story (and begins the villain story oWo)
+//the programming for the villain blob "VmovingBlob"
 
 void VmovingBlob(){
  drawBlobV();
@@ -140,9 +157,11 @@ void VmovingBlob(){
  
  
 
-//oof hero boi died er- the hero of our story has fallen
+//the hero dies
 void HitReg(){
  if(GemStet == 0){
+ //hit detection for the player and the enemy
+ 
    float dx = Hx - Vx;
    float dy = Hy - Vy;
    float dcx = Hx - Cx;
@@ -158,9 +177,12 @@ void HitReg(){
    delay(750);
    VSD = 0.5;
   }
+  //hit detection for collecting the change
+  
   if(distanceHC < 15 + 2.5){
     numChangeColl += 1;
     ChangeColl = 1;
+    score += 10;
     println(numChangeColl);
     coin.trigger();
     VSD += 0.1;
@@ -168,7 +190,8 @@ void HitReg(){
  }
 }
 
-//there's a lot of change on the ground while your running for your life
+//The part where the change falls from the sky, but only after you picked up the last piece that was dropped
+
 void Change(){
   if(GemStet == 0){
   if(ChangeColl == 0){
@@ -179,6 +202,8 @@ void Change(){
   ellipse(Vx,Vy,30,30);
   fill(255);
   ellipse(Hx,Hy,30,30);
+  fill(0);
+  text("Score: " + score, 220, 13);
   }
   else if(ChangeColl == 1){
     background(255);
@@ -190,6 +215,8 @@ void Change(){
    ellipse(Vx,Vy,30,30);
    fill(255);
    ellipse(Hx,Hy,30,30);
+   fill(0);
+   text("Score: " + score, 220, 13);
    ChangeColl = 0;
   }
   if(GemStet == 1){
@@ -199,6 +226,8 @@ void Change(){
     image(skull,Hx-15,Hy-15,30,30);
     fill(0,170,80);
     ellipse(Vx,Vy,30,30);
+    fill(0);
+    text("Score: " + score, 220, 13);
     
   }
   }
