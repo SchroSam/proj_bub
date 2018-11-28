@@ -1,5 +1,11 @@
-/* Shrod, 
-   
+/* Main Collaborators:
+Shrod, OlynCoon
+
+Policy from Shrod:
+
+Collaborators, please make most of your edits on this repository, and only use processing to test the code, 
+don't just Cntrl+A, then Cntrl+V your additional code from processing onto here, it can and will screw up the changes history
+
 */
 
 /*extra libraries that needed to be imported
