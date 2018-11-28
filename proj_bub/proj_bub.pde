@@ -35,6 +35,7 @@ void setup() {
   size (500,500);
   background(255);
   textSize(15);
+  greenblob = loadImage("green blob.jpg")
   skull = loadImage("Skull.jpg");
   game = new Minim(this);
   lose = game.loadSample("lose.mp3");
@@ -68,6 +69,7 @@ void drawBlobV(){
   if(GemStet == 0){
     fill(0,170,80);
     background(255);
+    image(green blob,Hx-15,Hy-15,30,30);
     ellipse(Vx,Vy,30,30);
     fill(255);
     ellipse(Hx,Hy,30,30);
