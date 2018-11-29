@@ -33,6 +33,7 @@ float Cx = random(width - 5);
 float Cy = random(height - 5);
 int GemStet = 0;
 PImage skull = null;
+PImage greenblob = null;
 Minim game;
 AudioSample lose = null;
 AudioSample coin = null;
@@ -73,10 +74,8 @@ void drawBlobH(){
 //function to draw/redraw the villain blob (used in the main movement function for the villain blob)
 void drawBlobV(){
   if(GemStet == 0){
-    fill(0,170,80);
     background(255);
-    image(green blob,Hx-15,Hy-15,30,30);
-    ellipse(Vx,Vy,30,30);
+    image(green blob,Vx-15,Vy-15,30,30);
     fill(255);
     ellipse(Hx,Hy,30,30);
     fill(240,233,12);
