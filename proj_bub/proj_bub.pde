@@ -42,7 +42,7 @@ void setup() {
   size (500,500);
   background(255);
   textSize(15);
-  greenblob = loadImage("green blob.jpg")
+  greenblob = loadImage("green blob.jpg");
   skull = loadImage("Skull.jpg");
   game = new Minim(this);
   lose = game.loadSample("lose.mp3");
@@ -55,33 +55,33 @@ void draw() {
   VmovingBlob();
   movingBlob(3);
   HitReg();
-  Change();
 }
-//function to draw/redraw the hero blob (and everything else) (used in the main movement function for the hero blob)
-void drawBlobH(){
-  if(GemStet == 0){
-  fill(255);
-  background(255);
-  ellipse(Hx,Hy,30,30);
-  fill(0,170,80);
-  ellipse(Vx,Vy,30,30);
-  fill(240,233,12);
-  ellipse(Cx,Cy,5,5);
-  fill(0);
-  text("Score: " + score, 220, 13);
-  }
-}
+
 //function to draw/redraw the villain blob (used in the main movement function for the villain blob)
-void drawBlobV(){
+void redraw(){
   if(GemStet == 0){
     background(255);
-    image(green blob,Vx-15,Vy-15,30,30);
+    image(greenblob,Vx-15,Vy-15,30,30);
     fill(255);
     ellipse(Hx,Hy,30,30);
     fill(240,233,12);
     ellipse(Cx,Cy,5,5);
     fill(0);
     text("Score: " + score, 220, 13);
+   }
+    if(ChangeColl == 1){
+    background(255);
+   Cx = random(width - 5);
+   Cy = random(height - 5);
+   fill (240,233,12);
+   ellipse(Cx,Cy,5,5);
+   fill(0,170,80);
+   ellipse(Vx,Vy,30,30);
+   fill(255);
+   ellipse(Hx,Hy,30,30);
+   fill(0);
+   text("Score: " + score, 220, 13);
+   ChangeColl = 0;
   }
   if(GemStet == 1){
     fill(0,170,80);
@@ -99,24 +99,24 @@ void drawBlobV(){
 
 //the programming for the movement of the hero (player) "movingBlob"
 void movingBlob(int SD) { 
-  drawBlobH();
+  redraw();
  if(GemStet == 0){
  
  if(keyPressed) {
    if (keyCode == UP) {
-     drawBlobH();
+     redraw();
      Hy -= SD;
    }
    if (keyCode == DOWN) {
-     drawBlobH();
+     redraw();
      Hy += SD;
    }
    if (keyCode == RIGHT) {
-    drawBlobH();
+    redraw();
     Hx += SD;
    }
    if (keyCode == LEFT) {
-    drawBlobH();
+    redraw();
     Hx -= SD;
    }
  }
@@ -139,23 +139,23 @@ void movingBlob(int SD) {
 //the programming for the villain blob "VmovingBlob"
 
 void VmovingBlob(){
- drawBlobV();
+ redraw();
    
  if(Vx < Hx){
    Vx += VSD;
-   drawBlobV();
+   redraw();
  }
  if(Vx > Hx){
    Vx -= VSD;
-   drawBlobV();
+   redraw();
  }
  if(Vy > Hy){
    Vy -= VSD;
-   drawBlobV();
+   redraw();
  }
  if(Vy < Hy){
    Vy += VSD;
-   drawBlobV();
+   redraw();
  }
 }
  
@@ -192,47 +192,6 @@ void HitReg(){
     VSD += 0.1;
   }
  }
-}
 
-//The part where the change falls from the sky, but only after you picked up the last piece that was dropped
-
-void Change(){
-  if(GemStet == 0){
-  if(ChangeColl == 0){
-    background(255);
-  fill(240,233,12);
-  ellipse(Cx,Cy,5,5);
-  fill(0,170,80);
-  ellipse(Vx,Vy,30,30);
-  fill(255);
-  ellipse(Hx,Hy,30,30);
-  fill(0);
-  text("Score: " + score, 220, 13);
-  }
-  else if(ChangeColl == 1){
-    background(255);
-   Cx = random(width - 5);
-   Cy = random(height - 5);
-   fill (240,233,12);
-   ellipse(Cx,Cy,5,5);
-   fill(0,170,80);
-   ellipse(Vx,Vy,30,30);
-   fill(255);
-   ellipse(Hx,Hy,30,30);
-   fill(0);
-   text("Score: " + score, 220, 13);
-   ChangeColl = 0;
-  }
-  if(GemStet == 1){
-    background(255);
-    fill(240,233,12);
-    ellipse(Cx,Cy,5,5);
-    image(skull,Hx-15,Hy-15,30,30);
-    fill(0,170,80);
-    ellipse(Vx,Vy,30,30);
-    fill(0);
-    text("Score: " + score, 220, 13);
-    
-  }
   }
 }
