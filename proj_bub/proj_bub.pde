@@ -84,10 +84,9 @@ void redraw(){
    ChangeColl = 0;
   }
   if(GemStet == 1){
-    fill(0,170,80);
     background(255);
     image(skull,Hx-15,Hy-15,30,30);
-    ellipse(Vx,Vy,30,30);
+    image(greenblob, Vx-15,Vy-15,30,30);
     fill(240,233,12);
     ellipse(Cx,Cy,5,5);
     fill(0);
@@ -165,7 +164,6 @@ void VmovingBlob(){
 void HitReg(){
  if(GemStet == 0){
  //hit detection for the player and the enemy
- 
    float dx = Hx - Vx;
    float dy = Hy - Vy;
    float dcx = Hx - Cx;
@@ -194,4 +192,3 @@ void HitReg(){
  }
 
   }
-}
