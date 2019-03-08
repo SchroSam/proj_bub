@@ -1,25 +1,17 @@
 /* Main Collaborators:
 Shrod, OlynCoon
 
-Policy from Shrod:
-
-Collaborators, please make most of your edits on this repository, and only use processing to test the code, 
-don't just Cntrl+A, then Cntrl+V your additional code from processing onto here, it can and will screw up the changes history
-
-*/
-
-/*extra libraries that needed to be imported
-TO RUN THIS WITH PROCESSING YOU NEED TO HAVE THESE LIBRARIES DOWNLOADED AND ENABLED OR IT WILL NOT WORK
+/*extra library that needed to be imported
+TO RUN THIS WITH PROCESSING YOU NEED TO HAVE THIS LIBRARY DOWNLOADED AND ENABLED OR IT WILL NOT WORK
 
 */
 
 import ddf.minim.*;
 
-
-
 //pre-program variables that need to be made global, sound and image files being loaded, intro music being played etc.
 
 //ps. this code person (or some version of him) should totally be me and my partners' mascot/logo/something
+//I name him WESL
 
 int score = 0;
 float Hx = 30;
