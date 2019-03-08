@@ -188,6 +188,7 @@ void HitReg(){
     println(numChangeColl);
     coin.trigger();
     VSD += 0.1;
+    HSD += 0.03
   }
  }
 
